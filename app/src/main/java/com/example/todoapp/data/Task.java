@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity(tableName = "tasks")
 public class Task {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     private int id;
     @NonNull

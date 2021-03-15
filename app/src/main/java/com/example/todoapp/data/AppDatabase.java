@@ -2,11 +2,14 @@ package com.example.todoapp;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -28,10 +31,38 @@ public abstract class AppDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "todo.db")
                             //.allowMainThreadQueries()
+                            .addCallback(CALLBACK)
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
+
+    private static RoomDatabase.Callback CALLBACK=new RoomDatabase.Callback(){
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db){
+            super.onCreate(db);
+
+            TodoDao dao=INSTANCE.todoDao();
+
+            AppDatabase.databaseWriteExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    dao.deleteAll();
+                    Task task=new Task("title1","description1",1,new Date());
+                    dao.insert(task);
+                    task=new Task("title2","description2",2,new Date());
+                    dao.insert(task);
+                }
+            });
+
+        }
+
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db){
+            super.onOpen(db);
+        }
+
+    };
 }
