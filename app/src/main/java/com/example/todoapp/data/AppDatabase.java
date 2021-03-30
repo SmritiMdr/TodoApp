@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.data;
 
 import android.content.Context;
 
@@ -8,6 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+
 
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
@@ -19,11 +20,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS=4;
-    static final ExecutorService databaseWriteExecutor= Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriteExecutor= Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public abstract TodoDao todoDao();
 
-    static AppDatabase getDatabase(final Context context){
+    public static AppDatabase getDatabase(final Context context){
 
         if(INSTANCE == null){
             synchronized (AppDatabase.class){
@@ -32,6 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class, "todo.db")
                             //.allowMainThreadQueries()
                             .addCallback(CALLBACK)
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

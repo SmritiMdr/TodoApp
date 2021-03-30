@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.data;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -22,7 +22,8 @@ public class Task {
     private Date createdDate;
 
 
-    public Task(String title, String description, int priority, Date createdDate) {
+
+    public Task(String title, String description,int priority, Date createdDate) {
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -30,7 +31,7 @@ public class Task {
     }
 
     @Ignore
-    public Task(int id,String title, String description, int priority, Date createdDate) {
+    public Task(int id,String title, String description, int priority, Date createdDate, String status) {
         this.id=id;
         this.title = title;
         this.description = description;
@@ -77,4 +78,5 @@ public class Task {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
 }
