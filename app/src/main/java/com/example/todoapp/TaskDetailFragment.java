@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.todoapp.data.Repository;
@@ -39,8 +40,17 @@ public class TaskDetailFragment extends Fragment {
     private EditText textViewDetail;
     private String title;
     private String description;
+    private int priority;
+
+    RadioButton complete;
+    RadioButton incomplete;
+
     private Button editButton;
-    private TaskAdapter.NotificationListener listener;
+    private Button deleteButton;
+
+    // Constants for priority
+    public static final int Priority_Complete = 2;
+    public static final int Priority_Incomplete = 1;
 
     public static TaskDetailFragment newInstance() {
         return new TaskDetailFragment();
@@ -70,12 +80,21 @@ public class TaskDetailFragment extends Fragment {
         textViewDetail = view.findViewById(R.id.textViewDetail);
         textViewDetail.setText(mTask.getDescription());
 
-        Button deleteButton = view.findViewById(R.id.buttonDelete);
+        complete= view.findViewById(R.id.compButton);
+        complete.setChecked(mTask.getPriority()==Priority_Complete);
+        complete.setOnClickListener(mTaskListener);
+
+        incomplete= view.findViewById(R.id.IncompButton);
+        incomplete.setChecked(mTask.getPriority()==Priority_Incomplete);
+        incomplete.setOnClickListener(mTaskListener);
+
+        deleteButton = view.findViewById(R.id.buttonDelete);
         deleteButton.setOnClickListener(mTaskListener);
 
         editButton = view.findViewById(R.id.buttonUpdate);
         editButton.setOnClickListener(mTaskListener);
     }
+
 
     public void setViewModel(MainViewModel mViewModel) {
         this.mViewModel = mViewModel;
@@ -88,6 +107,14 @@ public class TaskDetailFragment extends Fragment {
             Log.d(LOG,"Entered");
             switch (view.getId()) {
 
+                case R.id.compButton:
+                    mTask.setPriority(2);
+                    break;
+
+                case R.id.IncompButton:
+                    mTask.setPriority(1);
+                    break;
+
                 case R.id.buttonUpdate:
 
                     Log.d(LOG,"Button Clicked!");
@@ -99,9 +126,10 @@ public class TaskDetailFragment extends Fragment {
                     description = textViewDetail.getText().toString();
                     Log.d(LOG,"ID: "+description);
 
-                    Task task=new Task(title,description,1,new Date());
-                    mViewModel.setTask(task);
-                    sTaskRepository.update(task);
+                    mTask.setTitle(title);
+                    mTask.setDescription(description);
+
+                    sTaskRepository.update(mTask);
                     doSubmit();
                     break;
 
@@ -119,7 +147,7 @@ public class TaskDetailFragment extends Fragment {
 
     private void doSubmit() {
 
-       // mViewModel.setTask(mTask);
+        mViewModel.setTask(mTask);
 
 
         TaskFragment taskFragment = TaskFragment.newInstance();
@@ -130,13 +158,9 @@ public class TaskDetailFragment extends Fragment {
         transaction.replace(R.id.container, taskFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-        listener.updateView();
 
     }
 
-    public void setListener(TaskAdapter.NotificationListener listener){
-        this.listener=listener;
-    }
 
 
 }
