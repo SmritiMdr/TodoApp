@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
@@ -12,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,11 +29,18 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class TaskDetailFragment extends Fragment {
-    private static final String LOG_TAG = TaskDetailFragment.class.getSimpleName();
 
+    private static final String LOG=TaskDetailFragment.class.getSimpleName();
     private Task mTask;
     private Repository sTaskRepository;
     private MainViewModel mViewModel;
+    private View view;
+    private EditText textViewTitle;
+    private EditText textViewDetail;
+    private String title;
+    private String description;
+    private Button editButton;
+    private TaskAdapter.NotificationListener listener;
 
     public static TaskDetailFragment newInstance() {
         return new TaskDetailFragment();
@@ -42,10 +52,9 @@ public class TaskDetailFragment extends Fragment {
 
         mViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
 
-
         sTaskRepository = Repository.getRepository(getActivity().getApplication());
 
-        View view = inflater.inflate(R.layout.fragment_task_detail, container, false);
+        view = inflater.inflate(R.layout.fragment_task_detail, container, false);
         updateUI(view);
         return view;
 
@@ -55,16 +64,16 @@ public class TaskDetailFragment extends Fragment {
 
         mTask = mViewModel.getTask();
 
-        TextView textViewTitle = view.findViewById(R.id.textViewTitle);
+        textViewTitle = view.findViewById(R.id.textViewTitle);
         textViewTitle.setText(mTask.getTitle());
 
-        TextView textViewDetail = view.findViewById(R.id.textViewDetail);
+        textViewDetail = view.findViewById(R.id.textViewDetail);
         textViewDetail.setText(mTask.getDescription());
 
         Button deleteButton = view.findViewById(R.id.buttonDelete);
         deleteButton.setOnClickListener(mTaskListener);
 
-        Button editButton = view.findViewById(R.id.buttonUpdate);
+        editButton = view.findViewById(R.id.buttonUpdate);
         editButton.setOnClickListener(mTaskListener);
     }
 
@@ -76,10 +85,23 @@ public class TaskDetailFragment extends Fragment {
     private View.OnClickListener mTaskListener = new View.OnClickListener() {
 
         public void onClick(View view) {
+            Log.d(LOG,"Entered");
             switch (view.getId()) {
 
                 case R.id.buttonUpdate:
-                    sTaskRepository.update(mTask);
+
+                    Log.d(LOG,"Button Clicked!");
+
+
+                    title = textViewTitle.getText().toString();
+                    Log.d(LOG,"ID: "+title);
+
+                    description = textViewDetail.getText().toString();
+                    Log.d(LOG,"ID: "+description);
+
+                    Task task=new Task(title,description,1,new Date());
+                    mViewModel.setTask(task);
+                    sTaskRepository.update(task);
                     doSubmit();
                     break;
 
@@ -97,7 +119,8 @@ public class TaskDetailFragment extends Fragment {
 
     private void doSubmit() {
 
-        mViewModel.setTask(mTask);
+       // mViewModel.setTask(mTask);
+
 
         TaskFragment taskFragment = TaskFragment.newInstance();
 
@@ -107,7 +130,12 @@ public class TaskDetailFragment extends Fragment {
         transaction.replace(R.id.container, taskFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+        listener.updateView();
 
+    }
+
+    public void setListener(TaskAdapter.NotificationListener listener){
+        this.listener=listener;
     }
 
 

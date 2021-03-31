@@ -47,14 +47,7 @@ public class Repository {
         });
     }
 
-//    public void update(Task task){
-//        AppDatabase.databaseWriteExecutor.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                dao.update(task);
-//            }
-//        });
-//    }
+
 
     public void update(Task task){
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {

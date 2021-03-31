@@ -52,10 +52,10 @@ public abstract class AppDatabase extends RoomDatabase {
                 @Override
                 public void run() {
                     dao.deleteAll();
-                    Task task=new Task("title1","description1",1,new Date());
-                    dao.insert(task);
-                    task=new Task("title2","description2",2,new Date());
-                    dao.insert(task);
+//                    Task task=new Task("title1","description1",1,new Date());
+//                    dao.insert(task);
+//                    task=new Task("title2","description2",2,new Date());
+//                    dao.insert(task);
                 }
             });
 

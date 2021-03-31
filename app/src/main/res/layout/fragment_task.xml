@@ -67,7 +67,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
             android:clickable="true"
-            android:src="@drawable/ic_baseline_add_circle_24" />
+            android:src="@drawable/ic_baseline_add_circle_24"
+            app:backgroundTint="#8BC34A" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/delete_btn"
@@ -75,10 +76,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/ic_baseline_delete_all_24"
-            android:text="@string/delete_all_floating_button" />
+            android:text="@string/delete_all_floating_button"
+            app:backgroundTint="#F80606" />
 
     </LinearLayout>
 </ScrollView>

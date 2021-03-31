@@ -80,4 +80,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public interface ItemClickListener {
         void onItemClickListener(Task task);
     }
+
+    public interface NotificationListener{
+
+        public void updateView();
+    }
 }

@@ -10,4 +10,8 @@
     <string name="task_detail_detail">Detail</string>
     <string name="update_btn">Update</string>
     <string name="delete_btn">Delete</string>
+    <string name="add_to_your_todo_list_add_task_header">Add To Your TODO List</string>
+    <string name="add_to_your_todo_list_add_task_sub_header">Enter the task you need to do</string>
+    <string name="task_title_Hint">Task Title</string>
+    <string name="task_description_hint">Task Description</string>
 </resources>

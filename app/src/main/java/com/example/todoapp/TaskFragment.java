@@ -27,7 +27,7 @@ import java.util.List;
  * Use the {@link TaskFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TaskFragment extends Fragment implements TaskAdapter.ItemClickListener {
+public class TaskFragment extends Fragment implements TaskAdapter.ItemClickListener, TaskAdapter.NotificationListener{
 
     private static final String LOG_TAG = TaskFragment.class.getSimpleName();
 
@@ -56,6 +56,8 @@ public class TaskFragment extends Fragment implements TaskAdapter.ItemClickListe
                              @Nullable Bundle savedInstanceState) {
 
         Log.d(LOG_TAG, "onCreateView");
+
+
 
         viewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
         viewModel.getAllTasks().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
@@ -113,5 +115,18 @@ public class TaskFragment extends Fragment implements TaskAdapter.ItemClickListe
         viewModel.setTask(task);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new TaskDetailFragment())
         .commit();
+        TaskDetailFragment detailFragment=new TaskDetailFragment();
+        detailFragment.setListener(this);
+    }
+
+    @Override
+    public void updateView() {
+        viewModel.getAllTasks().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
+            @Override
+            public void onChanged(List<Task> tasks) {
+                if (tasks != null)
+                    adapter.setData(tasks);
+            }
+        });
     }
 }
