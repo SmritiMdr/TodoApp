@@ -14,7 +14,7 @@
 
 <h4> User Guide </h4>
 <ul>
-    <li> Short demonstration of Todo Application <br/> 
+    <li> Short demonstration of Todo Application <br/> <br/>
     <img src="Pictures/TodoApp.gif" alt="GIF of Todo application"> <br/>
     </li>
     <br/>
@@ -57,7 +57,7 @@
     Share now button : <br/>
     The user can share the message of the task via social network or other applications by first typing the text in the box above the share now button. After typing the text, the user will need to click on the share now button to finally share their message of the task through social networks or other applications. <br/> <br/>
     <img src="Pictures/ShareTask.png" width=25% height=25% alt="Screenshot of sharing task in Todo application" > </br> <br/>
-    <img src="Pictures/ClickingShareNow.png" width=25% height=25% alt="Screenshot of options to share task in Todo application" > </br> <br/>
+    <img src="Pictures/ClickingShareNow.png" width=25% height=25% alt="Screenshot of options to share task in Todo application" > </br> 
     </li>
     <br/>
     <br/>
