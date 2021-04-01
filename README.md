@@ -12,7 +12,8 @@
 
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
-<ul><h5> User Guide </h5>
+<h5> User Guide </h5>
+<ul>
     <li> Short demonstration of Todo Application <br/> 
     <img src="Pictures/TodoApp.gif" alt="GIF of Todo application">
     </li>
