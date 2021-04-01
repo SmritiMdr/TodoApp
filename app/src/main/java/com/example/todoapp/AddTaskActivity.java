@@ -14,6 +14,7 @@ import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity {
 
+    //Creating variables for EditText,Button and Repository
     private EditText titleEditText;
     private EditText descEditText;
     private Button addButton;
@@ -24,11 +25,16 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
+        //Getting id
         titleEditText=findViewById(R.id.title_at);
         descEditText=findViewById(R.id.desc_at);
         addButton=findViewById(R.id.add_button);
         repository=Repository.getRepository(this.getApplication());
 
+        /**
+         * Method to be executed when user clicks on add button
+         * Adds new task
+         */
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

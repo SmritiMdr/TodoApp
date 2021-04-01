@@ -8,9 +8,12 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
+
+
 @Entity(tableName = "tasks")
 public class Task {
 
+    //Attributes of the class
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int id;
@@ -23,6 +26,7 @@ public class Task {
 
 
 
+    //Parameterized constructor
     public Task(String title, String description,int priority, Date createdDate) {
         this.title = title;
         this.description = description;
@@ -30,6 +34,7 @@ public class Task {
         this.createdDate = createdDate;
     }
 
+    //This constructor will be ignored
     @Ignore
     public Task(int id,String title, String description, int priority, Date createdDate, String status) {
         this.id=id;
@@ -38,6 +43,8 @@ public class Task {
         this.priority = priority;
         this.createdDate = createdDate;
     }
+
+    //Getter and setter methods
 
     public int getId() {
         return id;

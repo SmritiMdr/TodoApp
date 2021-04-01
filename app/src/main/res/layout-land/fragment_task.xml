@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
 
@@ -61,7 +61,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
@@ -69,32 +69,32 @@
                 android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="10dp"
                 android:clickable="true"
                 android:src="@drawable/ic_baseline_add_circle_24"
                 app:backgroundTint="#8BC34A"
-                android:layout_marginStart="18dp"
-                android:focusable="true" />
+                android:layout_marginStart="32dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/delete_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="268dp"
+                android:layout_marginLeft="530dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_baseline_delete_all_24"
                 android:text="@string/delete_all_floating_button"
-                app:backgroundTint="#F80606" />
+                app:backgroundTint="#F80606"
+                android:layout_marginStart="530dp" />
 
         </LinearLayout>
 
         <EditText
             android:id="@+id/share_text"
             android:layout_width="250dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:hint="@string/enter_your_text_here_edit_text"
             android:textAlignment="center"/>

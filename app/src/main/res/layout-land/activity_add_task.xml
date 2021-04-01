@@ -10,14 +10,14 @@
         android:id="@id/add_task_header"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="32dp"
         android:background="#A69EF3"
         android:gravity="center"
         android:text="@string/add_to_your_todo_list_add_task_header"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

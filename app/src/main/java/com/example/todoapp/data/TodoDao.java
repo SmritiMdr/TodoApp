@@ -16,6 +16,7 @@ public interface TodoDao {
     @Query("select * from tasks")
     public LiveData<List<Task>> getAllTasks();
 
+    //OnConflict strategy constant which will replace the old data and continue the transaction.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public void insert(Task task);
 

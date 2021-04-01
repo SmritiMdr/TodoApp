@@ -14,4 +14,11 @@
     <string name="add_to_your_todo_list_add_task_sub_header">Enter the task you need to do</string>
     <string name="task_title_Hint">Task Title</string>
     <string name="task_description_hint">Task Description</string>
+    <string name="enter_your_text_here_edit_text">Enter your task to be shared </string>
+    <string name="share_text_btn">Share Now</string>
+    <string name="chooser_title_share_text">Share this task with: </string>
+    <string name="complete_radio_button_text">Complete</string>
+    <string name="incomplete_radio_button_text">Incomplete</string>
+    <string name="complete_radio_btn_text_land">Complete</string>
+    <string name="incomplete_radio_btn_text_land">Incomplete</string>
 </resources>

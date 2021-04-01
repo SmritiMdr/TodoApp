@@ -9,13 +9,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context="TaskDetailFragment">
 
         <EditText
             android:id="@+id/textViewDetail"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -26,12 +26,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
         <!-- RadioGroup for visible selection of a priority -->
+
+
         <EditText
             android:id="@+id/textViewTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/task_title_detail"
             android:textSize="24sp"
@@ -40,17 +42,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <RadioGroup
             android:id="@+id/radioGroups"
             android:layout_width="350dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDetail">
 
@@ -62,7 +62,7 @@
                 android:layout_weight="1"
                 android:background="#8BC34A"
                 android:checked="true"
-                android:text="@string/complete_radio_button_text"
+                android:text="@string/complete_radio_btn_text_land"
                 android:layout_marginStart="12dp" />
 
             <RadioButton
@@ -72,34 +72,33 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:background="#FF9800"
-                android:text="@string/incomplete_radio_button_text" />
+                android:text="@string/incomplete_radio_btn_text_land" />
 
         </RadioGroup>
 
         <Button
             android:id="@+id/buttonUpdate"
-            android:layout_width="0dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:text="@string/update_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroups" />
 
         <Button
             android:id="@+id/buttonDelete"
-            android:layout_width="0dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:text="@string/delete_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonUpdate" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

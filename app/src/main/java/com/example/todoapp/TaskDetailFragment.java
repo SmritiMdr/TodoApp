@@ -31,24 +31,45 @@ import java.util.List;
  */
 public class TaskDetailFragment extends Fragment {
 
+    //Constant fr logging
     private static final String LOG=TaskDetailFragment.class.getSimpleName();
+
+    //Variable for Task class to create object of its type
     private Task mTask;
+
+    //Variable for Repository class to make object of its type
     private Repository sTaskRepository;
+
+    //Variable for MainViewModel
     private MainViewModel mViewModel;
+
+    //Variable for View
     private View view;
+
+    //Variables for EditText view
     private EditText textViewTitle;
     private EditText textViewDetail;
+
+    //Variables for String Data type
     private String title;
     private String description;
+
+    //Variable for storing the priority number
     private int priority;
 
-    RadioButton complete;
-    RadioButton incomplete;
+    //Variable for RadioGroup view
+    private RadioGroup radioG;
 
+    //Variables for RadioButton view
+    private RadioButton complete;
+    private RadioButton incomplete;
+
+    //Variables for Button
     private Button editButton;
     private Button deleteButton;
 
     // Constants for priority
+    //Priority_Incomplete is set as default i.e. 1
     public static final int Priority_Complete = 2;
     public static final int Priority_Incomplete = 1;
 
@@ -70,6 +91,8 @@ public class TaskDetailFragment extends Fragment {
 
     }
 
+
+    //Updating UI
     private void updateUI(View view) {
 
         mTask = mViewModel.getTask();
@@ -79,6 +102,8 @@ public class TaskDetailFragment extends Fragment {
 
         textViewDetail = view.findViewById(R.id.textViewDetail);
         textViewDetail.setText(mTask.getDescription());
+
+        radioG=view.findViewById(R.id.radioGroups);
 
         complete= view.findViewById(R.id.compButton);
         complete.setChecked(mTask.getPriority()==Priority_Complete);
@@ -104,36 +129,51 @@ public class TaskDetailFragment extends Fragment {
     private View.OnClickListener mTaskListener = new View.OnClickListener() {
 
         public void onClick(View view) {
-            Log.d(LOG,"Entered");
+
+            //switch case to determine which view is clicked
+            //methods to be executed while clicking a particular view inside switch case
+
             switch (view.getId()) {
 
-                case R.id.compButton:
-                    mTask.setPriority(2);
-                    break;
-
-                case R.id.IncompButton:
-                    mTask.setPriority(1);
-                    break;
-
+                //if update button clicked
                 case R.id.buttonUpdate:
 
-                    Log.d(LOG,"Button Clicked!");
+                    Log.d(LOG,"Update Button Clicked!");
 
 
                     title = textViewTitle.getText().toString();
                     Log.d(LOG,"ID: "+title);
+                    mTask.setTitle(title);
 
                     description = textViewDetail.getText().toString();
                     Log.d(LOG,"ID: "+description);
 
-                    mTask.setTitle(title);
                     mTask.setDescription(description);
 
+                    mTask.setPriority(getPriorityFromViews());
+
+                    Log.d(LOG,"Task Status :"+mTask.getPriority());
                     sTaskRepository.update(mTask);
                     doSubmit();
                     break;
 
 
+                //if complete radio button clicked
+                case R.id.compButton:
+                    mTask.setPriority(2);
+                    priority=2;
+                    Log.d(LOG," "+mTask.getPriority());
+                    break;
+
+
+                //if Incomplete radio button clicked
+                case R.id.IncompButton:
+                    mTask.setPriority(1);
+                    priority=1;
+                    Log.d(LOG," "+mTask.getPriority());
+                    break;
+
+                //if delete button is clicked
                 case R.id.buttonDelete:
                     sTaskRepository.delete(mTask);
                     doSubmit();
@@ -145,13 +185,31 @@ public class TaskDetailFragment extends Fragment {
         }
     };
 
+    //Method that returns integer when user selects a radio button
+    // 1 as Incomplete
+    // 2 as Complete
+    public int getPriorityFromViews(){
+        int checkedId=radioG.getCheckedRadioButtonId();
+
+        switch(checkedId){
+
+            case R.id.compButton:
+                priority=2;
+                break;
+
+            case R.id.IncompButton:
+                priority=1;
+                break;
+        }
+        return priority;
+    }
+
     private void doSubmit() {
 
         mViewModel.setTask(mTask);
-
-
         TaskFragment taskFragment = TaskFragment.newInstance();
 
+        //Get the Fragment Manager and start the transaction
         assert getParentFragmentManager() != null;
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
 
