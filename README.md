@@ -2,7 +2,7 @@
 <h3>Todo Application </h3>  
 
 <hr style="height:5px;border-width:0;color:gray;background-color:gray">
-<h5>Features</h5>
+<h4>Features</h4>
 <ul>
     <li>Add new tasks</li>
     <li>Update a task</li>
@@ -12,7 +12,7 @@
 
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
-<h5> User Guide </h5>
+<h4> User Guide </h4>
 <ul>
     <li> Short demonstration of Todo Application <br/> 
     <img src="Pictures/TodoApp.gif" alt="GIF of Todo application">
