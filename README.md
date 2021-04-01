@@ -1,7 +1,7 @@
 TODO APP  <br>
 ![GIF of Todo application](/Pictures/TodoApp.gif) <br>
 
-![Screenshot of the first view of Todo application](Pictures/FirstView.png width=50% height=50%) <br>
+![Screenshot of the first view of Todo application](Pictures/FirstView.png | width=50% height=50%) <br>
 
 ![Screenshot of adding new task in Todo application](Pictures/AddNewTask.png width=50% height=50%) <br>
 
