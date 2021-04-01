@@ -1,11 +1,7 @@
 <h1> Developing Mobile Application</h1>
 <h3>Todo Application </h3>  
-<br/>
-<br/>
-<hr style="height:5px;border-width:0;color:gray;background-color:gray">
-<br/>
-<br/>
 
+<hr style="height:5px;border-width:0;color:gray;background-color:gray">
 <h5>Features</h5>
 <ul>
     <li>Add new tasks</li>
@@ -14,11 +10,7 @@
     <li>Share your message about the task with social network or other apps</li>
 </ul>
 
-<br/>
-<br/>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-<br/>
-<br/>
 
 <ul><h5> User Guide </h5>
     <li> Short demonstration of Todo Application <br/> 
