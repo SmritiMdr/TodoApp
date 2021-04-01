@@ -63,6 +63,6 @@
     <br/>
     <li>
     Architecture overview of todo application <br/>
-    <img src="Pictures/ArchitectureOverview.png" width=50% height=50% alt="Screenshot of the overview architecture of Todo application"> <br/>
+    <img src="Pictures/ArchitectureOverview.png" width=100% height=100% alt="Screenshot of the overview architecture of Todo application"> <br/>
     </li>
 </ul>
